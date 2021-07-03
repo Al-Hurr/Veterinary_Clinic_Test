@@ -1,0 +1,70 @@
+﻿@page
+@model Veterinary_Clinic_Test.Pages.Animals.CreateModel
+@{
+}
+
+<form method="post">
+    <div class="row container w-75 p-0 m-0 overflow">
+        <div class="col-9">
+            <h2 class="text-info text-black-50">Добавить животное</h2>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Animal.Name" class="control-label"></label>
+                <input asp-for="Animal.Name" class="form-control" required />
+                <span asp-validation-for="Animal.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.BirthDate" class="control-label"></label>
+                <input asp-for="Animal.BirthDate" class="form-control" required />
+                <span asp-validation-for="Animal.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Breed" class="control-label"></label>
+                <input asp-for="Animal.Breed" class="form-control" required />
+                <span asp-validation-for="Animal.Breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Gender" class="control-label"></label>
+                <select class="form-control" asp-for="Animal.Gender">
+                    <option value="0" selected>-пусто-</option>
+                    <option value="Самец">Самец</option>
+                    <option value="Самка">Самка</option>
+                </select>
+                <span asp-validation-for="Animal.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group authors">
+                <label asp-for="Animal.Owner" class="control-label"></label>
+                <select class="form-control" asp-for="Animal.Owner.Id" asp-items="Model.Owners">
+                    <option value="0" selected>-пусто-</option>
+                </select>
+                <span asp-validation-for="Animal.Owner.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group authors">
+                <label asp-for="Animal.Doctor" class="control-label"></label>
+                <select class="form-control" asp-for="Animal.Doctor.Id" asp-items="Model.Doctors">
+                    <option value="0" selected>-пусто-</option>
+                </select>
+                <span asp-validation-for="Animal.Doctor.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group authors">
+                <label asp-for="Animal.Diagnosis" class="control-label"></label>
+                <select class="form-control" asp-for="Animal.Diagnosis.Id" asp-items="Model.Diagnoses">
+                    <option value="0" selected>-пусто-</option>
+                </select>
+                <span asp-validation-for="Animal.Diagnosis.Id" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <div class="col-4">
+                    <input type="submit" value="Добавить" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-4">
+                    <a asp-page="Index" class="btn btn-success form-control">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

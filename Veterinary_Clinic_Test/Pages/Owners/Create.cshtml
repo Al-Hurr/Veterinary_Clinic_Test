@@ -1,0 +1,40 @@
+﻿@page
+@model Veterinary_Clinic_Test.Pages.Owners.CreateModel
+@{
+}
+
+<form method="post">
+    <div class="row container w-75 p-0 m-0 overflow">
+        <div class="col-9">
+            <h2 class="text-info text-black-50">Добавить хозяина</h2>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Owner.FullName" class="control-label"></label>
+                <input asp-for="Owner.FullName" class="form-control" required />
+                <span asp-validation-for="Owner.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.Adress" class="control-label"></label>
+                <input asp-for="Owner.Adress" class="form-control" required />
+                <span asp-validation-for="Owner.Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.Phone" class="control-label"></label>
+                <input asp-for="Owner.Phone" pattern="[7-9]{1}[0-9]{10}" maxlength="11" class="form-control" required />
+                <span asp-validation-for="Owner.Phone" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <div class="col-4">
+                    <input type="submit" value="Добавить" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-4">
+                    <a asp-page="Index" class="btn btn-success form-control">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

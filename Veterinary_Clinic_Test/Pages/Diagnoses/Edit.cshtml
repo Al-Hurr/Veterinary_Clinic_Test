@@ -1,0 +1,43 @@
+﻿@page
+@model Veterinary_Clinic_Test.Pages.Diagnoses.EditModel
+@{
+}
+
+<form method="post">
+    <div class="row container w-75 p-0 m-0 overflow">
+        <div class="col-9">
+            <h2 class="text-info text-black-50">Изменить диагноз</h2>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <input asp-for="Diagnosis.Id" hidden />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Diagnosis.Name" class="control-label"></label>
+                <input asp-for="Diagnosis.Name" class="form-control" required />
+                <span asp-validation-for="Diagnosis.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnosis.ProductionDate" class="control-label"></label>
+                <input asp-for="Diagnosis.ProductionDate" class="form-control" required />
+                <span asp-validation-for="Diagnosis.ProductionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group authors">
+                <label asp-for="Diagnosis.Doctor" class="control-label"></label>
+                <select class="form-control" asp-for="Diagnosis.Doctor.Id" asp-items="Model.Doctors">
+                    <option value="0" selected>-пусто-</option>
+                </select>
+                <span asp-validation-for="Diagnosis.Doctor.Id" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group row">
+                <div class="col-4">
+                    <input type="submit" value="Изменить" class="btn btn-primary form-control" />
+                </div>
+                <div class="col-4">
+                    <a asp-page="Index" class="btn btn-success form-control">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

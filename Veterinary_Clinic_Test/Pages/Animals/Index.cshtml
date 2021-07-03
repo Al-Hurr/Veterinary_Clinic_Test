@@ -1,0 +1,84 @@
+﻿@page
+@model Veterinary_Clinic_Test.Pages.Animals.IndexModel
+@{
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info text-black-50">Список животных</h2>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-info form-control text-white" asp-page="/Animals/Create">Добавить животное</a>
+    </div>
+    <div class="col-12 border mt-3 p-3">
+        <form method="post">
+            @if (Model.Animals.Any())
+            {
+                <table class="table table-striped table-bordered border">
+                    <tr class="table-secondary thead-dark">
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().BirthDate"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Breed"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Gender"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Owner"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Doctor"></label>
+                        </th>
+                        <th>
+                            <label asp-for="@Model.Animals.FirstOrDefault().Diagnosis"></label>
+                        </th>
+                        <th class="w-25"></th>
+                    </tr>
+                    @foreach (var item in Model.Animals)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.BirthDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Breed)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Gender)
+                            </td>
+                            <td>
+                                @(item.Owner == null ? "-пусто-" : Html.DisplayFor(m => item.Owner.FullName)) 
+                            </td>
+                            <td>
+                                @(item.Doctor == null ? "-пусто-" : Html.DisplayFor(m => item.Doctor.FullName))
+                            </td>
+                            <td>
+                                @(item.Diagnosis == null ? "-пусто-" : Html.DisplayFor(m => item.Diagnosis.Name))
+                            </td>
+                            <td style="text-align:center;">
+                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Изменить</a>
+                                <button onclick="return confirm('Вы хотите удалить строку?')" asp-route-id="@item.Id"
+                                        asp-page-handler="Delete" class="btn btn-danger btn-sm">
+                                    Удалить
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>Список пуст</p>
+            }
+        </form>
+    </div>
+</div>
