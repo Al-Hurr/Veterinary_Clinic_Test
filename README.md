@@ -8,4 +8,5 @@ Veterinary clinic test data base
 - Животное
 - Диагноз
 - Прививка
+
 В качестве бд ипользовался postgre sql
